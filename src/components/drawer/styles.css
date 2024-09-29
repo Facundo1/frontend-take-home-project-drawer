@@ -1,0 +1,39 @@
+.drawer-container {
+  position: relative;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tool-button {
+  cursor: pointer;
+  padding: 8px 12px;
+  background-color: #377cc5;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.tool-button:hover {
+  background-color: #0056b3;
+}
+
+.canvas {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: crosshair;
+}
+
+.text-box {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #000;
+  padding: 10px;
+  resize: both;
+  overflow: auto;
+  color: #000;
+}

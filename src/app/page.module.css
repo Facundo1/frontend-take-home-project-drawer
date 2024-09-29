@@ -110,6 +110,12 @@
   position: relative;
 }
 
+.board {
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 1201;
+}
+
 /* Mobile */
 @media (max-width: 700px) {
   .content {
