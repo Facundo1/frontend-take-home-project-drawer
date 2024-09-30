@@ -18,6 +18,7 @@ const Drawer: React.FC = () => {
   const [drawing, setDrawing] = useState<boolean>(false);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   const [tool, setTool] = useState<"pencil" | "eraser">("pencil");
+  const [color, setColor] = useState<string>("#000000");
   const [textBoxes, setTextBoxes] = useState<TextBox[]>([]);
   const [currentTextBox, setCurrentTextBox] = useState<TextBox | null>(null);
   const [offset, setOffset] = useState<{ x: number; y: number } | null>(null);
@@ -28,12 +29,12 @@ const Drawer: React.FC = () => {
       const ctx = canvas.getContext("2d");
       if (ctx) {
         ctx.lineWidth = 2;
-        ctx.strokeStyle = "#000000";
-        ctx.fillStyle = "#000000";
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
         setContext(ctx);
       }
     }
-  }, []);
+  }, [color]);
 
   const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = e.nativeEvent;
@@ -48,6 +49,7 @@ const Drawer: React.FC = () => {
     if (drawing && context) {
       const { offsetX, offsetY } = e.nativeEvent;
       if (tool === "pencil") {
+        context.strokeStyle = color;
         context.lineTo(offsetX, offsetY);
         context.stroke();
       } else if (tool === "eraser") {
@@ -65,6 +67,10 @@ const Drawer: React.FC = () => {
 
   const changeTool = (newTool: "pencil" | "eraser") => {
     setTool(newTool);
+  };
+
+  const changeColor = (newColor: string) => {
+    setColor(newColor);
   };
 
   const addTextBox = () => {
@@ -141,6 +147,26 @@ const Drawer: React.FC = () => {
         <button className="tool-button" onClick={clearCanvas}>
           Clear
         </button>
+        {tool === "pencil" && (
+          <div className="color-picker">
+            <button
+              className="color-button black"
+              onClick={() => changeColor("#000000")}
+            ></button>
+            <button
+              className="color-button red"
+              onClick={() => changeColor("#ff0000")}
+            ></button>
+            <button
+              className="color-button green"
+              onClick={() => changeColor("#00ff00")}
+            ></button>
+            <button
+              className="color-button blue"
+              onClick={() => changeColor("#0000ff")}
+            ></button>
+          </div>
+        )}
       </div>
       <canvas
         ref={canvasRef}

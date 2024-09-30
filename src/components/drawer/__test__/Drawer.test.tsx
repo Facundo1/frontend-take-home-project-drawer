@@ -1,3 +1,5 @@
+import "@testing-library/jest-dom";
+
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import Drawer from "../Drawer";
@@ -21,27 +23,21 @@ describe("Drawer Component", () => {
     const addTextBoxButton = screen.getByRole("button", {
       name: /add text box/i,
     });
-
     fireEvent.click(addTextBoxButton);
-
     expect(screen.getByDisplayValue("Your text here")).toBeInTheDocument();
   });
 
   test("updates the text in the text box", () => {
     fireEvent.click(screen.getByRole("button", { name: /add text box/i }));
-
     const textBox = screen.getByDisplayValue("Your text here");
     fireEvent.change(textBox, { target: { value: "New text" } });
-
     expect(screen.getByDisplayValue("New text")).toBeInTheDocument();
   });
 
   test("clears the canvas and removes text boxes when 'Clear' is clicked", () => {
     fireEvent.click(screen.getByRole("button", { name: /add text box/i }));
-
     const clearButton = screen.getByRole("button", { name: /clear/i });
     fireEvent.click(clearButton);
-
     expect(
       screen.queryByDisplayValue("Your text here")
     ).not.toBeInTheDocument();
@@ -55,5 +51,14 @@ describe("Drawer Component", () => {
     expect(eraserButton).toBeInTheDocument();
     fireEvent.click(eraserButton);
     expect(pencilButton).toBeInTheDocument();
+  });
+
+  test("changes the pencil color when a color button is clicked", () => {
+    const blackColorButton = screen.getByRole("button", { name: /black/i });
+    const redColorButton = screen.getByRole("button", { name: /red/i });
+
+    fireEvent.click(blackColorButton);
+
+    fireEvent.click(redColorButton);
   });
 });

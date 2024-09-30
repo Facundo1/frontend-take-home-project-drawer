@@ -75,4 +75,4 @@ To run the project, follow these steps:
 
 ## Live Demo
 
-You can view the live version of this project here:
+Live version of this project here: https://main--frontend-take-home-project-drawer.netlify.app/

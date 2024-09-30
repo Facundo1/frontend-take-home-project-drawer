@@ -115,7 +115,7 @@ export default function Home() {
 
       <br />
       <br />
-      <h3>Mock &nbsp;</h3>
+      <h3 className={styles.subtitle}>Try this here 👇🏼 &nbsp;</h3>
       <div className={styles.center}>
         <button className={styles.board} onClick={toggleCanvas}>
           Show/Hide Drawer

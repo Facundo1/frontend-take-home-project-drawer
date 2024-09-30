@@ -37,3 +37,39 @@
   overflow: auto;
   color: #000;
 }
+
+.color-picker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.color-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.color-button:hover {
+  transform: scale(1.2);
+}
+
+.color-button.black {
+  background-color: #000000;
+}
+
+.color-button.red {
+  background-color: #ff0000;
+}
+
+.color-button.green {
+  background-color: #00ff00;
+}
+
+.color-button.blue {
+  background-color: #0000ff;
+}

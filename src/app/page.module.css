@@ -114,6 +114,14 @@
   padding: 10px 20px;
   cursor: pointer;
   z-index: 1201;
+  background-color: darkorange;
+  color: black;
+  font-weight: 800;
+  font-size: large;
+}
+
+.subtitle {
+color: black;
 }
 
 /* Mobile */
